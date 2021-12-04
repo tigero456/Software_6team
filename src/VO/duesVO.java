@@ -16,6 +16,11 @@ public class duesVO implements Serializable{
 		this.dues_date = dues_date;
 		this.login_id = login_id;
 	}
+	@Override
+	public String toString() {
+		return "Information:"+getDues_id()+"/"+getDues_name()+"/"+getDues()+"/"+getDues_date()+"/"+getLogin_id();
+		
+	}
 
 	public String getDues_id() {
 		return dues_id;

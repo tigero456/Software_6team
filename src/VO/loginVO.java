@@ -12,7 +12,12 @@ public class loginVO implements Serializable{
 		this.id = id;
 		this.pw = pw;
 	}
-	
+	@Override
+	public String toString() {
+		return "Information:"+getLogin_id()+"/"+getId()+"/"+getPw();
+		
+	}
+ 
 	public String getLogin_id() {
 		return login_id;
 	}
