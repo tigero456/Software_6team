@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
+import VO.duesVO;
 import VO.loginVO;
 
 public class clientDAO {
@@ -87,5 +90,56 @@ public class clientDAO {
 			return id_che;
 		} 
 		return id_che;
+	}
+	public void duesAdd(duesVO dues,String id) {
+		out.println("duesAdd"); 
+		out.flush();
+		try {
+			ob_out.writeObject(dues);
+			out.flush();
+		} catch (IOException e) { 
+			e.printStackTrace();
+		}
+	}
+	public void duesDel(duesVO dues) {
+		out.println("duesDel"); 
+		out.flush();
+		try {
+			ob_out.writeObject(dues);
+			out.flush();
+		} catch (IOException e) { 
+			e.printStackTrace();
+		}
+	}
+	public List<duesVO> duesSearch(loginVO login,String date) {
+		List<duesVO> duesList = new ArrayList<duesVO>();
+		out.println("duesAdd"); 
+		out.flush();
+		out.println(date); 
+		out.flush();
+		try {
+			ob_out.writeObject(login);
+			out.flush();
+		} catch (IOException e) { 
+			e.printStackTrace();
+		}
+		try {
+			duesList = (List<duesVO>)ob_in.readObject();
+		} catch (ClassNotFoundException e) { 
+			e.printStackTrace();
+		} catch (IOException e) { 
+			e.printStackTrace();
+		}
+		return duesList;
+	}
+	public void duesUpdate(duesVO dues) {
+		out.println("duesUpdate"); 
+		out.flush();
+		try {
+			ob_out.writeObject(dues);
+			out.flush();
+		} catch (IOException e) { 
+			e.printStackTrace();
+		}
 	}
 }
