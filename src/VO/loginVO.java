@@ -3,6 +3,8 @@ package VO;
 import java.io.Serializable;
 
 public class loginVO implements Serializable{
+	private static final long serialVersionUID = 2L;
+	
 	private String login_id;
 	private String id;
 	private String pw;
