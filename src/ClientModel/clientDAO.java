@@ -55,7 +55,7 @@ public class clientDAO {
 		if(id_che==0) { 
 			return id_che;
 		}
-		out.println("sign_sub"); 
+		out.println("createUser"); 
 		out.flush();
 		try {
 			ob_out.writeObject(login);
@@ -66,9 +66,10 @@ public class clientDAO {
 		id_che+=1;
 		return id_che;
 	}
-	public int checkIdPw(loginVO login) {
+	public int[] checkIdPw(loginVO login) {
 		String check = "0";
-		int id_che= 0;
+		String[] checkList = null;
+		int[] id_che= new int[2];
 		out.println("checkIdPw"); 
 		out.flush();
 		try {
@@ -79,14 +80,16 @@ public class clientDAO {
 		}
 		try {
 			check = in.readLine();
+			checkList = check.split("-");
 		} catch (IOException e) { 
 			e.printStackTrace();
 		}
-		if(check.equals("0")==true) {
-			id_che = 0;
+		if(checkList[0].equals("0")==true) {
+			id_che[0] = 0;
 			return id_che;
-		}else if(check.equals("1")==true){
-			id_che = 1;
+		}else if(checkList[0].equals("1")==true){
+			id_che[0] = 1;
+			id_che[1] = Integer.parseInt(checkList[1]);
 			return id_che;
 		} 
 		return id_che;
