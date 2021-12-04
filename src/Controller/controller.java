@@ -11,10 +11,15 @@ public class controller {
 		c = new clientDAO(socket);
 	}
 	
-	public int login(String id, String pw){
+	public int[] login(String id, String pw){
 		loginVO lov = new loginVO("0", id, pw);
-		int i=c.checkIdPw(lov);
+		int[] i=c.checkIdPw(lov);
 		
+		return i;
+	}
+	public int join(String id, String pw){
+		loginVO lov = new loginVO("0", id, pw);
+		int i=c.createUser(lov);
 		
 		return i;
 	}
