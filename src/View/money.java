@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import Controller.controller;
@@ -22,6 +23,7 @@ import java.net.UnknownHostException;
 
 public class money extends JFrame {
 
+	int loginid=0;
 	private JPanel contentPane;
 	private JPanel Lpanal;
 	private JPanel Jpanel;
@@ -36,7 +38,7 @@ public class money extends JFrame {
 	private JLabel LID;
 	private JLabel LPW;
 	private JTextField LTID;
-	private JTextField LTPW;
+	private JPasswordField LTPW;
 	private JButton Lbtn;
 	private JButton Jbtn;
 
@@ -44,7 +46,7 @@ public class money extends JFrame {
 	private JLabel JoinPW;
 	private JLabel JoinNAME;
 	private JTextField JTID;
-	private JTextField JTPW;
+	private JPasswordField JTPW;
 	private JTextField JTNAME;
 	private JButton Joinyes;
 	private JButton Joinno;
@@ -132,7 +134,7 @@ public class money extends JFrame {
 						LPW.setBounds(112, 363, 171, 69);
 						Lpanal.add(LPW);
 						
-						LTPW = new JTextField();
+						LTPW = new JPasswordField();
 						LTPW.setBounds(295, 384, 211, 39);
 						LTPW.setColumns(10);
 						Lpanal.add(LTPW);
@@ -144,8 +146,9 @@ public class money extends JFrame {
 							@Override
 							public void actionPerformed(ActionEvent e) {
 								// TODO Auto-generated method stub
-								int i=con.login(LTID.getText(),LTPW.getText());
-								if(i==1) {
+								int[] i=con.login(LTID.getText(),LTPW.getText());
+								if(i[0]==1) {
+									loginid=i[1];
 									JOptionPane.showMessageDialog( money.this, "로그인 성공!");
 									Lpanal.setVisible(false);
 									Jpanel.setVisible(false);
@@ -219,7 +222,7 @@ public class money extends JFrame {
 						Jpanel.add(JTID);
 						JTID.setColumns(10);
 						
-						JTPW = new JTextField();
+						JTPW = new JPasswordField();
 						JTPW.setBounds(295, 290, 211, 39);
 						Jpanel.add(JTPW);
 						JTPW.setColumns(10);
@@ -229,12 +232,58 @@ public class money extends JFrame {
 						Jpanel.add(JTNAME);
 						JTNAME.setColumns(10);
 						
+						
 						Joinyes = new JButton("확인");
 						Joinyes.setBounds(600, 232, 120, 60);
+						Jbtn.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								// TODO Auto-generated method stub
+								int i=con.join(LTID.getText(),LTPW.getText());
+								if(i==0) {
+									JOptionPane.showMessageDialog( money.this, "이미 가입된 아이디");
+									JTID.setText("");
+									JTPW.setText("");
+									
+								}
+								else {
+									
+									JOptionPane.showMessageDialog( money.this, "회원가입 성공!");
+									Lpanal.setVisible(true);
+									Jpanel.setVisible(false);
+									Mpanel.setVisible(false);
+									Ipanel.setVisible(false);
+									Spanel.setVisible(false);
+									SPpanel.setVisible(false);
+									Dpanel.setVisible(false);
+									Cpanel.setVisible(false);
+									CNpanel.setVisible(false);
+								}
+								
+							}
+						});
 						Jpanel.add(Joinyes);
 						
 						Joinno = new JButton("취소");
 						Joinno.setBounds(600, 325, 120, 60);
+						Jbtn.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								// TODO Auto-generated method stub
+								Lpanal.setVisible(true);
+								Jpanel.setVisible(false);
+								Mpanel.setVisible(false);
+								Ipanel.setVisible(false);
+								Spanel.setVisible(false);
+								SPpanel.setVisible(false);
+								Dpanel.setVisible(false);
+								Cpanel.setVisible(false);
+								CNpanel.setVisible(false);
+								
+							}
+						});
 						Jpanel.add(Joinno);
 						
 						label_1 = new JLabel("회원가입");
