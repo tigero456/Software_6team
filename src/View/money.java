@@ -1,11 +1,14 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
 import Controller.controller;
@@ -483,6 +486,14 @@ public class money extends JFrame {
 				
 				SPpanel = new JPanel();
 				SPpanel.setBounds(0, 0, 834, 601);
+				String[] headings=new String[] {"No", "이름", "금액", "날짜"};
+				Object[][] data=new Object[][] {
+					{"1", "daniel", "1100", "2021"}
+				};
+				JTable table=new JTable(data, headings);
+				table.setPreferredScrollableViewportSize(new Dimension(700, 600));
+				table.setFillsViewportHeight(true);
+				SPpanel.add(new JScrollPane(table));
 				contentPane.add(SPpanel);
 				SPpanel.setLayout(null);
 				
