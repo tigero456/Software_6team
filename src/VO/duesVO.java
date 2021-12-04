@@ -3,6 +3,8 @@ package VO;
 import java.io.Serializable;
 
 public class duesVO implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private String dues_id;
 	private String dues_name;
 	private String dues;
