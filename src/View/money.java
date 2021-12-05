@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
 import Controller.controller;
+import VO.duesVO;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -23,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.List;
 
 public class money extends JFrame {
 
@@ -440,6 +442,12 @@ public class money extends JFrame {
 				Spanel.add(STmonth);
 				STmonth.setColumns(10);
 				
+
+				SPpanel = new JPanel();
+				SPpanel.setBounds(0, 0, 834, 601);
+				contentPane.add(SPpanel);
+				SPpanel.setLayout(null);
+				
 				Searchbtn = new JButton("검색");
 				Searchbtn.setFont(new Font("굴림", Font.BOLD, 30));
 				Searchbtn.setBounds(225, 453, 134, 46);
@@ -448,7 +456,24 @@ public class money extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						con.searchdate(STyear.getText(), STmonth.getText(), loginid);
+						List<duesVO> x;
+						
+						x=con.searchdate(STyear.getText(), STmonth.getText(), loginid);
+
+						
+						String[] headings=new String[] {"No", "이름", "금액", "날짜"};
+						String[][] data=new String[x.size()][4];
+						for(int i=0; i<x.size(); i++) {
+							data[i][0]=x.get(0).getDues_id();
+							data[i][1]=x.get(0).getDues_name();
+							data[i][2]=x.get(0).getDues();
+							data[i][3]=x.get(0).getDues_date();
+							
+						}
+						JTable table=new JTable(data, headings);
+						table.setPreferredScrollableViewportSize(new Dimension(700, 600));
+						table.setFillsViewportHeight(true);
+						SPpanel.add(new JScrollPane(table));
 						
 						Lpanal.setVisible(false);
 						Jpanel.setVisible(false);
@@ -486,17 +511,6 @@ public class money extends JFrame {
 				});
 				Spanel.add(Snobtn);
 				
-				SPpanel = new JPanel();
-				SPpanel.setBounds(0, 0, 834, 601);
-				String[] headings=new String[] {"No", "이름", "금액", "날짜"};
-				String[][] data=new String[0][4];
-				
-				JTable table=new JTable(data, headings);
-				table.setPreferredScrollableViewportSize(new Dimension(700, 600));
-				table.setFillsViewportHeight(true);
-				SPpanel.add(new JScrollPane(table));
-				contentPane.add(SPpanel);
-				SPpanel.setLayout(null);
 				
 				JButton SPchangebtn = new JButton("수정");
 				SPchangebtn.setBounds(175, 481, 134, 46);
