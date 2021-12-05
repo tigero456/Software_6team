@@ -10,6 +10,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.controller;
 import VO.duesVO;
@@ -217,10 +218,10 @@ public class money extends JFrame {
 						JoinPW.setBounds(77, 269, 148, 69);
 						Jpanel.add(JoinPW);
 						
-						JoinNAME = new JLabel("이름");
+						/*JoinNAME = new JLabel("이름");
 						JoinNAME.setFont(new Font("굴림", Font.BOLD, 30));
 						JoinNAME.setBounds(143, 339, 101, 69);
-						Jpanel.add(JoinNAME);
+						Jpanel.add(JoinNAME);*/
 						
 						JTID = new JTextField();
 						JTID.setBounds(295, 220, 211, 39);
@@ -393,6 +394,24 @@ public class money extends JFrame {
 				JButton Ibtn = new JButton("등록");
 				Ibtn.setFont(new Font("굴림", Font.BOLD, 25));
 				Ibtn.setBounds(225, 503, 134, 46);
+				Ibtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						con.add(ITname.getText(), ITmoney.getText(), ITdate.getText(), loginid);
+						Lpanal.setVisible(false);
+						Jpanel.setVisible(false);
+						Mpanel.setVisible(true);
+						Ipanel.setVisible(false);
+						Spanel.setVisible(false);
+						SPpanel.setVisible(false);
+						Dpanel.setVisible(false);
+						Cpanel.setVisible(false);
+						CNpanel.setVisible(false);
+						
+					}
+				});
 				Ipanel.add(Ibtn);
 				
 				JButton Ino = new JButton("취소");
@@ -448,6 +467,14 @@ public class money extends JFrame {
 				contentPane.add(SPpanel);
 				SPpanel.setLayout(null);
 				
+				String[] headings=new String[] {"No", "이름", "금액", "날짜"};
+				String[][] data =  new String[0][4];
+				JTable table=new JTable(data, headings);
+				table.setPreferredScrollableViewportSize(new Dimension(700, 600));
+				table.setFillsViewportHeight(true);
+				JScrollPane pane = new JScrollPane(table); 
+				SPpanel.add(pane);
+				
 				Searchbtn = new JButton("검색");
 				Searchbtn.setFont(new Font("굴림", Font.BOLD, 30));
 				Searchbtn.setBounds(225, 453, 134, 46);
@@ -460,9 +487,6 @@ public class money extends JFrame {
 						
 						x=con.searchdate(STyear.getText(), STmonth.getText(), loginid);
 
-						
-						String[] headings=new String[] {"No", "이름", "금액", "날짜"};
-						String[][] data=new String[x.size()][4];
 						for(int i=0; i<x.size(); i++) {
 							data[i][0]=x.get(0).getDues_id();
 							data[i][1]=x.get(0).getDues_name();
@@ -470,10 +494,7 @@ public class money extends JFrame {
 							data[i][3]=x.get(0).getDues_date();
 							
 						}
-						JTable table=new JTable(data, headings);
-						table.setPreferredScrollableViewportSize(new Dimension(700, 600));
-						table.setFillsViewportHeight(true);
-						SPpanel.add(new JScrollPane(table));
+						
 						
 						Lpanal.setVisible(false);
 						Jpanel.setVisible(false);
@@ -510,6 +531,9 @@ public class money extends JFrame {
 					}
 				});
 				Spanel.add(Snobtn);
+				 
+				
+				
 				
 				
 				JButton SPchangebtn = new JButton("수정");
@@ -780,6 +804,24 @@ public class money extends JFrame {
 				
 				Dbtn = new JButton("삭제");
 				Dbtn.setBounds(216, 442, 134, 46);
+				Dbtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						con.del(DTnumber.getText());
+						Lpanal.setVisible(false);
+						Jpanel.setVisible(false);
+						Mpanel.setVisible(false);
+						Ipanel.setVisible(false);
+						Spanel.setVisible(false);
+						SPpanel.setVisible(true);
+						Dpanel.setVisible(false);
+						Cpanel.setVisible(false);
+						CNpanel.setVisible(false);
+						
+					}
+				});
 				Dpanel.add(Dbtn);
 				
 				Dnobtn = new JButton("취소");
