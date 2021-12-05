@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.List;
+import javax.swing.JTextArea;
 
 public class money extends JFrame {
 
@@ -86,7 +87,7 @@ public class money extends JFrame {
 	
 	private JLabel label;
 	private JLabel label_1;
-	private JTable table_1;
+	private JTextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -556,10 +557,6 @@ public class money extends JFrame {
 						
 					}
 				});
-				
-				table_1 = new JTable();
-				table_1.setBounds(0, 0, 1, 1);
-				SPpanel.add(table_1);
 				SPpanel.add(SPchangebtn);
 				
 				JButton SPdeletebtn = new JButton("삭제");
@@ -603,6 +600,10 @@ public class money extends JFrame {
 					}
 				});
 				SPpanel.add(SPnobtn);
+				
+				textArea = new JTextArea();
+				textArea.setBounds(80, 30, 700, 300);
+				SPpanel.add(textArea);
 				SPchangebtn.addActionListener(new ActionListener() {
 					
 					@Override
