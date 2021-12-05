@@ -89,6 +89,7 @@ public class clientDAO {
 		out.flush(); 
 	}
 	public List<duesVO> duesSearch(int id,String date) {
+		//a
 		List<duesVO> duesList = new ArrayList<duesVO>();
 		out.println("duesAdd--"+id+"--"+date); 
 		out.flush(); 
