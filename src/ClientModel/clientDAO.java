@@ -97,6 +97,8 @@ public class clientDAO {
 	public void duesAdd(duesVO dues,String id) {
 		out.println("duesAdd"); 
 		out.flush();
+		out.println(id); 
+		out.flush();
 		try {
 			ob_out.writeObject(dues);
 			out.flush();
