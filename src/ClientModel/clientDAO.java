@@ -88,16 +88,10 @@ public class clientDAO {
 		out.println("duesDel--"+dues.getDues_id()); 
 		out.flush(); 
 	}
-	public List<duesVO> duesSearch(loginVO login,String date) {
+	public List<duesVO> duesSearch(int id,String date) {
 		List<duesVO> duesList = new ArrayList<duesVO>();
-		out.println("duesAdd--"+login.getLogin_id()+"--"+date); 
-		out.flush();
-		try {
-			ob_out.writeObject(login);
-			out.flush();
-		} catch (IOException e) { 
-			e.printStackTrace();
-		}
+		out.println("duesAdd--"+id+"--"+date); 
+		out.flush(); 
 		try {
 			duesList = (List<duesVO>)ob_in.readObject();
 		} catch (ClassNotFoundException e) { 
