@@ -230,10 +230,10 @@ public class money extends JFrame {
 						Jpanel.add(JTPW);
 						JTPW.setColumns(10);
 						
-						JTNAME = new JTextField();
+						/*JTNAME = new JTextField();
 						JTNAME.setBounds(295, 360, 211, 39);
 						Jpanel.add(JTNAME);
-						JTNAME.setColumns(10);
+						JTNAME.setColumns(10);*/
 						
 						
 						Joinyes = new JButton("확인");
@@ -243,7 +243,7 @@ public class money extends JFrame {
 							@Override
 							public void actionPerformed(ActionEvent e) {
 								// TODO Auto-generated method stub
-								int i=con.join(LTID.getText(),LTPW.getText());
+								int i=con.join(JTID.getText(),JTPW.getText());
 								if(i==0) {
 									JOptionPane.showMessageDialog( money.this, "이미 가입된 아이디");
 									JTID.setText("");

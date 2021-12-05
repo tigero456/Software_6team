@@ -19,7 +19,10 @@ public class loginVO implements Serializable{
 		return "Information:"+getLogin_id()+"/"+getId()+"/"+getPw();
 		
 	}
- 
+    
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public String getLogin_id() {
 		return login_id;
 	}
