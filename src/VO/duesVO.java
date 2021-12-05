@@ -24,6 +24,10 @@ public class duesVO implements Serializable{
 		
 	}
 
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public String getDues_id() {
 		return dues_id;
 	}

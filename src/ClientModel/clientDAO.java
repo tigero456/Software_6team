@@ -30,10 +30,8 @@ public class clientDAO {
 	public int checkId(String id) {
 		int intCheck = 0;
 		String check = "0";
-		out.println("checkId"); 
-		out.flush();
-		out.println(id); 
-		out.flush();
+		out.println("checkId--"+id); 
+		out.flush(); 
 		while(true){
 			try {
 				check = in.readLine();
@@ -54,15 +52,9 @@ public class clientDAO {
 		int id_che = this.checkId(login.getId());
 		if(id_che==0) { 
 			return id_che;
-		}
-		out.println("createUser"); 
-		out.flush();
-		try {
-			ob_out.writeObject(login);
-			out.flush();
-		} catch (IOException e) { 
-			e.printStackTrace();
-		}
+		} 
+		out.println("createUser--"+login.getId()+"--"+login.getPw()); 
+		out.flush();  
 		id_che+=1;
 		return id_che;
 	}
@@ -70,14 +62,8 @@ public class clientDAO {
 		String check = "0";
 		String[] checkList = null;
 		int[] id_che= new int[2];
-		out.println("checkIdPw"); 
-		out.flush();
-		try {
-			ob_out.writeObject(login);
-			out.flush();
-		} catch (IOException e) { 
-			e.printStackTrace();
-		}
+		out.println("checkIdPw--"+login.getId()+"--"+login.getPw()); 
+		out.flush(); 
 		try {
 			check = in.readLine();
 			checkList = check.split("-");
@@ -94,33 +80,17 @@ public class clientDAO {
 		} 
 		return id_che;
 	}
-	public void duesAdd(duesVO dues,String id) {
-		out.println("duesAdd"); 
-		out.flush();
-		out.println(id); 
-		out.flush();
-		try {
-			ob_out.writeObject(dues);
-			out.flush();
-		} catch (IOException e) { 
-			e.printStackTrace();
-		}
+	public void duesAdd(duesVO dues,String id) { 
+		out.println("duesAdd--"+id+"--"+dues.getDues_name()+"--"+dues.getDues()+"--"+dues.getDues_date()); 
+		out.flush(); 
 	}
 	public void duesDel(duesVO dues) {
-		out.println("duesDel"); 
-		out.flush();
-		try {
-			ob_out.writeObject(dues);
-			out.flush();
-		} catch (IOException e) { 
-			e.printStackTrace();
-		}
+		out.println("duesDel--"+dues.getDues_id()); 
+		out.flush(); 
 	}
 	public List<duesVO> duesSearch(loginVO login,String date) {
 		List<duesVO> duesList = new ArrayList<duesVO>();
-		out.println("duesAdd"); 
-		out.flush();
-		out.println(date); 
+		out.println("duesAdd--"+login.getLogin_id()+"--"+date); 
 		out.flush();
 		try {
 			ob_out.writeObject(login);
@@ -138,13 +108,7 @@ public class clientDAO {
 		return duesList;
 	}
 	public void duesUpdate(duesVO dues) {
-		out.println("duesUpdate"); 
+		out.println("duesUpdate--"+dues.getDues_id()+"--"+dues.getDues_name()+"--"+dues.getDues()+"--"+dues.getDues_date());
 		out.flush();
-		try {
-			ob_out.writeObject(dues);
-			out.flush();
-		} catch (IOException e) { 
-			e.printStackTrace();
-		}
 	}
 }
