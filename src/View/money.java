@@ -86,6 +86,7 @@ public class money extends JFrame {
 	
 	private JLabel label;
 	private JLabel label_1;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -467,13 +468,6 @@ public class money extends JFrame {
 				contentPane.add(SPpanel);
 				SPpanel.setLayout(null);
 				
-				String[] headings=new String[] {"No", "이름", "금액", "날짜"};
-				String[][] data =  new String[0][4];
-				JTable table=new JTable(data, headings);
-				table.setPreferredScrollableViewportSize(new Dimension(700, 600));
-				table.setFillsViewportHeight(true);
-				JScrollPane pane = new JScrollPane(table); 
-				SPpanel.add(pane);
 				
 				Searchbtn = new JButton("검색");
 				Searchbtn.setFont(new Font("굴림", Font.BOLD, 30));
@@ -487,6 +481,13 @@ public class money extends JFrame {
 						
 						x=con.searchdate(STyear.getText(), STmonth.getText(), loginid);
 
+						String[] headings=new String[] {"No", "이름", "금액", "날짜"};
+						String[][] data =  new String[x.size()][4];
+						JTable table=new JTable(data, headings);
+						table.setPreferredScrollableViewportSize(new Dimension(700, 600));
+						table.setFillsViewportHeight(true);
+						JScrollPane pane = new JScrollPane(table); 
+						SPpanel.add(pane);
 						for(int i=0; i<x.size(); i++) {
 							data[i][0]=x.get(0).getDues_id();
 							data[i][1]=x.get(0).getDues_name();
@@ -555,6 +556,10 @@ public class money extends JFrame {
 						
 					}
 				});
+				
+				table_1 = new JTable();
+				table_1.setBounds(0, 0, 1, 1);
+				SPpanel.add(table_1);
 				SPpanel.add(SPchangebtn);
 				
 				JButton SPdeletebtn = new JButton("삭제");
