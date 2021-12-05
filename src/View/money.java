@@ -448,6 +448,8 @@ public class money extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
+						con.searchdate(STyear.getText(), STmonth.getText(), loginid);
+						
 						Lpanal.setVisible(false);
 						Jpanel.setVisible(false);
 						Mpanel.setVisible(false);
