@@ -1,8 +1,10 @@
 package Controller;
 
 import java.net.Socket;
+import java.util.List;
 
 import ClientModel.clientDAO;
+import VO.duesVO;
 import VO.loginVO;
 
 public class controller {
@@ -22,6 +24,13 @@ public class controller {
 		int i=c.createUser(lov);
 		
 		return i;
+	}
+	public List<duesVO> searchdate(String year, String month, int id){
+		String i=year+"-"+month;
+		List<duesVO> j;
+		j=c.duesSearch(id, i);
+		
+		return j;
 	}
 }
 
