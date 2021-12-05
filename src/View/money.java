@@ -238,7 +238,7 @@ public class money extends JFrame {
 						
 						Joinyes = new JButton("확인");
 						Joinyes.setBounds(600, 232, 120, 60);
-						Jbtn.addActionListener(new ActionListener() {
+						Joinyes.addActionListener(new ActionListener() {
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
@@ -270,7 +270,7 @@ public class money extends JFrame {
 						
 						Joinno = new JButton("취소");
 						Joinno.setBounds(600, 325, 120, 60);
-						Jbtn.addActionListener(new ActionListener() {
+						Joinno.addActionListener(new ActionListener() {
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
