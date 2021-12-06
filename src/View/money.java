@@ -482,19 +482,12 @@ public class money extends JFrame {
 						
 						x=con.searchdate(STyear.getText(), STmonth.getText(), loginid);
 
-						String[] headings=new String[] {"No", "이름", "금액", "날짜"};
-						String[][] data =  new String[x.size()][4];
-						JTable table=new JTable(data, headings);
-						table.setPreferredScrollableViewportSize(new Dimension(700, 600));
-						table.setFillsViewportHeight(true);
-						JScrollPane pane = new JScrollPane(table); 
-						SPpanel.add(pane);
-						for(int i=0; i<x.size(); i++) {
-							data[i][0]=x.get(0).getDues_id();
-							data[i][1]=x.get(0).getDues_name();
-							data[i][2]=x.get(0).getDues();
-							data[i][3]=x.get(0).getDues_date();
-							
+						textArea.setText("번호  이름   금액   날짜\n");   
+						for(int i=0;i<x.size();i++) {
+							textArea.append(x.get(i).getDues_id()+" ");
+							textArea.append(x.get(i).getDues_name()+"    ");
+							textArea.append(x.get(i).getDues()+"        ");
+							textArea.append(x.get(i).getDues_date()+"\n"); 
 						}
 						
 						
@@ -604,6 +597,7 @@ public class money extends JFrame {
 				textArea = new JTextArea();
 				textArea.setBounds(80, 30, 700, 300);
 				SPpanel.add(textArea);
+				
 				SPchangebtn.addActionListener(new ActionListener() {
 					
 					@Override
